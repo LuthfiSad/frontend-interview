@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Video Platform UI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    /* Custom dark mode styling */
+    .dark-mode {
+      background-color: #1a202c;
+      color: white;
+    }
+    .video-card:hover .card-content {
+      transform: translateY(0);
+      opacity: 1;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .video-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Dark Mode Button Transition */
+    #darkModeToggle {
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #darkModeToggle:hover {
+      background-color: #4A5568;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+
+  <!-- Header Section -->
+  <header class="flex items-center justify-between p-4 bg-gray-800 shadow-md">
+    <h1 class="text-xl font-bold text-indigo-400">FiStreaming</h1>
+    <div class="flex items-center space-x-4">
+      <button id="darkModeToggle" class="bg-gray-700 text-white px-3 py-2 rounded hover:bg-gray-600 transition">
+        Dark Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section with Carousel -->
+  <section class="relative">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+          <img src="https://via.placeholder.com/1200x500" alt="Video Thumbnail 1" class="w-full h-96 object-cover" />
+        </div>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+          <img src="https://via.placeholder.com/1200x500" alt="Video Thumbnail 2" class="w-full h-96 object-cover" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+          <img src="https://via.placeholder.com/1200x500" alt="Video Thumbnail 3" class="w-full h-96 object-cover" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- Search, Filter, and Sort Section -->
+  <section class="bg-gray-900 p-4 text-white">
+    <!-- Search Bar -->
+    <div class="flex items-center justify-center space-x-2">
+      <input
+        type="text"
+        placeholder="Telusuri"
+        class="bg-gray-800 max-w-xl text-white rounded-full px-4 py-2 w-full outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button class="p-2 bg-blue-500 rounded-full">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l4-4-4-4m5 4h12"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Filter Categories -->
+    <div class="flex overflow-x-auto mt-4 space-x-3">
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Semua</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Musik</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Game</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Podcast</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Animasi</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Memasak</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Musik Rap</button>
+      <button class="flex-shrink-0 bg-gray-700 rounded-full px-4 py-1 text-sm hover:bg-gray-600 transition">Game Petualangan</button>
+      <!-- Tambahkan lagi sesuai kebutuhan -->
+    </div>
+  </section>
+
+  <!-- Video Cards Section -->
+  <section class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full mx-auto">
+    <!-- Video Card -->
+    <a href="detail.html" class="video-card relative bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-transform hover:translateY(-5px)">
+      <img src="https://via.placeholder.com/300x200" alt="Video Thumbnail" class="w-full h-48 object-cover">
+      <div class="p-4 flex flex-col space-y-2">
+        <h2 class="text-lg font-semibold truncate">Video Title</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 truncate">Short description of the video.</p>
+        <div class="flex justify-between items-center mt-2">
+          <span class="text-indigo-500 font-bold text-sm">1.2M Views</span>
+          <!-- Like Button -->
+          <button class="text-gray-600 dark:text-gray-300 hover:text-red-500 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 15V9m8-5v5m0 0l4-4m-4 4l-4-4m4 0v12m8-9v9m-3 3l-3-3m-4-4L5 5"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="p-5 bg-gray-800 text-center text-gray-400 text-sm">
+    © 2024 FiStreaming. All rights reserved.
+  </footer>
+
+  <!-- SwiperJS & GSAP Libraries -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script>
+    // Swiper.js setup
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+
+    // GSAP Animations
+    gsap.from("header", { duration: 1, y: -100, opacity: 0, ease: "bounce" });
+    gsap.from(".mySwiper", { duration: 1.5, scale: 0.5, opacity: 0, delay: 0.5, ease: "power4.inOut" });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+
+    darkModeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+    });
+  </script>
+</body>
+</html>
