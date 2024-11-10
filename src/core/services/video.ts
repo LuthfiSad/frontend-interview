@@ -11,11 +11,11 @@ const thumbnails = [
 ];
 
 const videos = [
-  "https://youtu.be/qmgA_WejI8w?si=jbvd7iaQK3cVpJAi",
-  "https://youtu.be/fLPS4sIpYh0?si=cToJfCH45_V1aIUG",
-  "https://youtu.be/bUxd3jqCr94?si=2SN-qP7MRXuiOmGp",
-  "https://youtu.be/lWMlgX_1xdU?si=qk-VnW6E7oE7_qLi",
-  "https://youtu.be/2cBHu2450TM?si=P2SFUtaFUR9WIO0L"
+  "https://www.youtube.com/embed/qmgA_WejI8w?si=1exk98bEfqxkuvec",
+  "https://www.youtube.com/embed/fLPS4sIpYh0?si=e1KgGHvYrIqOwSlK",
+  "https://www.youtube.com/embed/bUxd3jqCr94?si=aQKBnu1iF3Akv1kH",
+  "https://www.youtube.com/embed/lWMlgX_1xdU?si=Xq-lIqHBA3oQElGb",
+  "https://www.youtube.com/embed/2cBHu2450TM?si=eLnISYriMe_jgJJ2"
 ];
 
 const sampleVideos: Video[] = Array.from({ length: 50 }, (_, i) => ({
