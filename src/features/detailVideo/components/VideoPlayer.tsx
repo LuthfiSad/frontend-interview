@@ -1,7 +1,11 @@
+import { Video } from "@core/model/video";
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 
-const VideoPlayer: React.FC = () => {
+const VideoPlayer: React.FC<Video> = ({
+  thumbnailUrl,
+  videoUrl
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoPlayerRef = useRef(null);
 
@@ -22,7 +26,7 @@ const VideoPlayer: React.FC = () => {
         >
           {/* Thumbnail Image */}
           <img
-            src="https://via.placeholder.com/800x400" // Ganti dengan URL thumbnail video yang sesungguhnya
+            src={thumbnailUrl}
             alt="Video Thumbnail"
             className="w-full h-[400px] object-cover"
           />
@@ -35,7 +39,7 @@ const VideoPlayer: React.FC = () => {
         <iframe
           width="100%"
           height={400}
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+          src={videoUrl}
           allowFullScreen
         />
       )}

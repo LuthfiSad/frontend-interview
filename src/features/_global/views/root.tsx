@@ -12,7 +12,7 @@ const RootView: React.FC = () => {
   return (
     <div className={`${isDarkMode ? "bg-black" : "bg-white"} font-sans antialiased min-h-screen flex flex-col justify-between`}>
       <Header />
-      <div className="flex-1">
+      <div className="flex-1 w-screen overflow-hidden flex flex-col">
         <Outlet />
       </div>
       {/* <ScrollRestoration /> */}

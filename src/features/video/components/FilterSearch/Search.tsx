@@ -1,18 +1,27 @@
 import { darkModeAtom } from "@features/_global/store/darkMode";
 import { useSearch } from "@features/_global/hooks/useSearch";
 import { useAtom } from "jotai";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineSortAscending,
   AiOutlineSortDescending,
 } from "react-icons/ai";
 import Dropdown from "../Dropdown";
 import { DropdownProps } from "@features/video/types/dropdown";
+import useDebounce from "@features/_global/hooks/useDebounce";
 
 const Search: React.FC = () => {
   const [isDarkMode] = useAtom(darkModeAtom);
   const { directionQuery, handleSearchChange, searchQuery, orderByQuery } =
     useSearch();
+
+  const [inputValue, setInputValue] = useState(searchQuery);
+  const debouncedSearchQuery = useDebounce(inputValue, 500);
+
+  // Update handleSearchChange only when debounced value changes
+  useEffect(() => {
+    handleSearchChange({ search: debouncedSearchQuery });
+  }, [debouncedSearchQuery, handleSearchChange]);
 
   const dropdownOrderBy: DropdownProps = {
     title: orderByQuery || "Order By",
@@ -64,8 +73,8 @@ const Search: React.FC = () => {
     <div className="flex items-center justify-center gap-2 flex-wrap">
       <input
         type="text"
-        value={searchQuery}
-        onChange={(e) => handleSearchChange({ search: e.target.value })}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
         placeholder="Telusuri"
         className={`${
           isDarkMode

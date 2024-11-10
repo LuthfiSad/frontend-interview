@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export const useSearch = () => {
@@ -16,7 +17,7 @@ export const useSearch = () => {
     filterBy?: string;
   }
 
-  const handleSearchChange = ({
+  const handleSearchChange = useCallback(({
     search,
     direction,
     orderBy,
@@ -28,7 +29,7 @@ export const useSearch = () => {
       ...(orderBy !== "" &&(orderBy || orderByQuery) ? { orderBy: orderBy ?? orderByQuery } : null),
       ...(filterBy !== "" && (filterBy || filterByQuery) ? { filterBy: filterBy ?? filterByQuery } : null),
     });
-  };
+  }, []);
 
   return {
     searchQuery,

@@ -1,4 +1,5 @@
 import { Video } from "@core/model/video";
+import { formatDate } from "@features/_global/helper/FormatTime";
 import { darkModeAtom } from "@features/_global/store/darkMode";
 import { likesAtom } from "@features/_global/store/likes";
 import { useAtom } from "jotai";
@@ -63,15 +64,15 @@ const CardVideo: React.FC<Video> = ({
             {uploader}
           </span>
           <span className="mx-2">•</span>
-          <span className="flex items-center space-x-1">
+          <span className="flex items-center space-x-1 text-xs">
             <FaRegClock size={14} />
-            <span>{uploadDate.getDate()}</span>
+            <span>{formatDate(uploadDate)}</span>
           </span>
         </div>
 
         {/* Video Description */}
         <p
-          className={`text-sm truncate ${
+          className={`text-sm line-clamp-2 ${
             isDarkMode ? "text-gray-400" : "text-gray-700"
           }`}
         >

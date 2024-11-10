@@ -4,6 +4,7 @@ import { useAtom } from "jotai";
 import { darkModeAtom } from "../store/darkMode";
 import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useAtom(darkModeAtom);
@@ -37,9 +38,9 @@ const Header: React.FC = () => {
           ? "0 4px 6px rgba(255, 255, 255, 0.2)"
           : "0 4px 6px rgba(0, 0, 0, 0.2)"
       }}
-      className={`flex items-center justify-between p-4 ${isDarkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-900"}`}
+      className={`flex z-10 items-center sticky top-0 justify-between p-4 ${isDarkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-900"}`}
     >
-      <h1 className="text-xl font-bold">FiStreaming</h1>
+      <h1 className="text-xl font-bold"><Link to="/">FiStreaming</Link></h1>
       <div className="flex items-center space-x-4">
         {isDarkMode ? (
           <MdLightMode
