@@ -6,22 +6,6 @@
   <title>Video Detail - FiStreaming</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-  <style>
-    /* Custom styling */
-    .video-detail-container {
-      background-color: #f9f9f9;
-    }
-    .comment-card:hover {
-      background-color: #f1f1f1;
-    }
-    .video-thumbnail {
-      width: 100%;
-      height: auto;
-    }
-    .video-thumbnail:hover {
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body class="bg-gray-100">
 
@@ -35,7 +19,7 @@
   </header>
 
   <!-- Video Detail Section -->
-  <section class="video-detail-container max-w-[1400px] mx-auto p-6 space-y-6 flex gap-6 flex-col lg:flex-row">
+  <section class="bg-white max-w-[1400px] mx-auto p-6 space-y-6 flex gap-6 flex-col lg:flex-row">
     <!-- Video Player -->
     <div class="w-full space-y-4">
       <div class="bg-black">
@@ -84,7 +68,7 @@
         <!-- Comments List -->
         <div class="space-y-4">
           <!-- Comment 1 -->
-          <div class="comment-card p-4 bg-white rounded-lg shadow-sm">
+          <div class="hover:bg-gray-200 p-4 bg-white rounded-lg shadow-sm">
             <div class="flex items-center space-x-3">
               <img src="https://via.placeholder.com/40" alt="User Avatar" class="rounded-full w-10 h-10 object-cover" />
               <div>
@@ -98,29 +82,11 @@
       </div>
     </div>
 
-    <!-- Recommended Videos -->
     <div class="max-w-sm w-full space-y-4 lg:mt-0 mt-6">
       <h2 class="text-xl font-semibold">Recommended Videos</h2>
       <div class="space-y-4">
-        <!-- Video 1 -->
         <a href="detail.html" class="video-card gap-2 rounded-lg flex hover:translate-y-[-5px] transition-all duration-200">
-          <img src="https://via.placeholder.com/400x225" alt="Video Thumbnail" class="video-thumbnail max-w-40 max-h-24 h-full object-cover rounded-lg" />
-          <div class="space-y-1">
-            <h3 class="text-sm font-semibold">Build a Responsive Layout</h3>
-          <p class="text-sm text-gray-600">Learn how to create a responsive layout with CSS Flexbox.</p>
-          </div>
-        </a>
-        <!-- Video 2 -->
-        <a href="detail.html" class="video-card gap-2 rounded-lg flex hover:translate-y-[-5px] transition-all duration-200">
-          <img src="https://via.placeholder.com/400x225" alt="Video Thumbnail" class="video-thumbnail max-w-40 max-h-24 h-full object-cover rounded-lg" />
-          <div class="space-y-1">
-            <h3 class="text-sm font-semibold">Build a Responsive Layout</h3>
-          <p class="text-sm text-gray-600">Learn how to create a responsive layout with CSS Flexbox.</p>
-          </div>
-        </a>
-        <!-- Video 3 -->
-        <a href="detail.html" class="video-card gap-2 rounded-lg flex hover:translate-y-[-5px] transition-all duration-200">
-          <img src="https://via.placeholder.com/400x225" alt="Video Thumbnail" class="video-thumbnail max-w-40 max-h-24 h-full object-cover rounded-lg" />
+          <img src="https://via.placeholder.com/400x225" alt="Video Thumbnail" class="w-full cursor-pointer max-w-40 max-h-24 h-full object-cover rounded-lg" />
           <div class="space-y-1">
             <h3 class="text-sm font-semibold">Build a Responsive Layout</h3>
           <p class="text-sm text-gray-600">Learn how to create a responsive layout with CSS Flexbox.</p>

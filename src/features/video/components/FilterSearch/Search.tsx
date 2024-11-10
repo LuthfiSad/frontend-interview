@@ -43,7 +43,7 @@ const Search: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2">
+    <div className="flex items-center justify-center gap-2 flex-wrap">
       <input
         type="text"
         value={searchQuery}
@@ -53,7 +53,7 @@ const Search: React.FC = () => {
           isDarkMode
             ? "bg-gray-600 text-white border-gray-300"
             : "bg-gray-300 text-black border-gray-600"
-        } border-2 box-border max-w-xl rounded-full px-4 py-2 w-full ring-0 outline-none`}
+        } border-2 box-border max-w-xl rounded-full px-4 py-2 flex-1 ring-0 outline-none min-w-[150px]`}
       />
       <Dropdown {...dropdownOrderBy} />
       <Dropdown {...dropdownDirection} />

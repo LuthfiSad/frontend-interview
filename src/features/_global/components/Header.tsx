@@ -32,7 +32,12 @@ const Header: React.FC = () => {
   return (
     <header
       ref={headerRef}
-      className={`flex items-center justify-between p-4 ${isDarkMode ? "bg-gray-800 text-gray-100 shadow-white" : "bg-gray-50 text-gray-900"} shadow-md`}
+      style={{
+        boxShadow: isDarkMode
+          ? "0 4px 6px rgba(255, 255, 255, 0.2)"
+          : "0 4px 6px rgba(0, 0, 0, 0.2)"
+      }}
+      className={`flex items-center justify-between p-4 ${isDarkMode ? "bg-gray-800 text-gray-100" : "bg-gray-50 text-gray-900"}`}
     >
       <h1 className="text-xl font-bold">FiStreaming</h1>
       <div className="flex items-center space-x-4">

@@ -7,7 +7,14 @@ import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
 const FilterSearch: React.FC = () => {
   const [isDarkMode] = useAtom(darkModeAtom);
   return (
-    <section className={`${isDarkMode ? "bg-gray-900 shadow-white" : "bg-gray-100"} p-4 shadow-md text-white`}>
+    <section
+      className={`${isDarkMode ? "bg-gray-900" : "bg-gray-100"} p-4 text-white`}
+      style={{
+        boxShadow: isDarkMode
+          ? "0 4px 6px rgba(255, 255, 255, 0.2)"
+          : "0 4px 6px rgba(0, 0, 0, 0.2)",
+      }}
+    >
       <Search />
       <Filter />
     </section>
