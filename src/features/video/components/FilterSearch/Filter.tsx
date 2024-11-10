@@ -40,6 +40,14 @@ const Filter = () => {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
+
+  const handleChangeFilter = (filter: string) => {
+    if (filterByQuery === filter) {
+      handleSearchChange({ filterBy: "" });
+    } else {
+      handleSearchChange({ filterBy: filter });
+    }
+  };
   return (
     <div className="relative">
       {!isAtStart && (
@@ -57,13 +65,15 @@ const Filter = () => {
         ref={scrollRef}
       >
         <button
-          onClick={() => handleSearchChange({ filterBy: "Semua" })}
+          onClick={() => handleChangeFilter("Semua")}
           className={`flex-shrink-0 ${
             filterByQuery === "Semua"
               ? isDarkMode
-                ? "bg-gray-100 text-gray-900"
-                : "bg-gray-900"
-              : ""
+                ? "bg-gray-300 text-gray-800"
+                : "bg-gray-600"
+              : isDarkMode
+              ? "bg-gray-600"
+              : "bg-gray-300 text-gray-800"
           } rounded-full px-4 py-1 text-sm hover:bg-gray-500 transition`}
         >
           Semua

@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           ? "0 -4px 6px rgba(255, 255, 255, 0.2)"
           : "0 -4px 6px rgba(0, 0, 0, 0.1)"
       }}
-      className={`p-5 ${isDarkMode ? "bg-gray-800 text-gray-100 shadow-white" : "bg-gray-50 text-gray-900"} text-center text-sm`}
+      className={`p-5 ${isDarkMode ? "bg-gray-800 text-gray-100 shadow-white" : "bg-gray-100 text-gray-900"} text-center text-sm`}
     >
       © 2024 FiStreaming. All rights reserved.
     </footer>
