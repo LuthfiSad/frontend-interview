@@ -91,7 +91,7 @@ const Filter = () => {
       <div className="relative">
         {!isAtStartCategory && (
           <div
-            className="absolute flex justify-center px-4 rounded-r-sm items-center top-0 left-0 bottom-0 bg-gray-900"
+            className={`absolute flex justify-center px-4 rounded-r-sm items-center top-0 left-0 bottom-0 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}
             style={{
               boxShadow: "rgba(17, 24, 39, .5) 4px 0px 2px",
             }}
@@ -137,7 +137,7 @@ const Filter = () => {
         </div>
         {!isAtEndCategory && (
           <div
-            className="absolute flex justify-center px-4 rounded-l-sm items-center top-0 right-0 bottom-0 bg-gray-900"
+            className={`absolute flex justify-center px-4 rounded-l-sm items-center top-0 right-0 bottom-0 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}
             style={{
               boxShadow: "rgba(17, 24, 39, .5) -4px 0px 2px",
             }}
@@ -157,7 +157,7 @@ const Filter = () => {
       <div className="relative">
         {!isAtStartUploader && (
           <div
-            className="absolute flex justify-center px-4 rounded-r-sm items-center top-0 left-0 bottom-0 bg-gray-900"
+            className={`absolute flex justify-center px-4 rounded-r-sm items-center top-0 left-0 bottom-0 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}
             style={{
               boxShadow: "rgba(17, 24, 39, .5) 4px 0px 2px",
             }}
@@ -203,7 +203,7 @@ const Filter = () => {
         </div>
         {!isAtEndUploader && (
           <div
-            className="absolute flex justify-center px-4 rounded-l-sm items-center top-0 right-0 bottom-0 bg-gray-900"
+            className={`absolute flex justify-center px-4 rounded-l-sm items-center top-0 right-0 bottom-0 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}
             style={{
               boxShadow: "rgba(17, 24, 39, .5) -4px 0px 2px",
             }}

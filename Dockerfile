@@ -17,7 +17,7 @@ COPY . .
 RUN yarn build
 
 # Mengekspos port yang digunakan oleh aplikasi (port 5173 untuk Vite)
-EXPOSE 5173
+EXPOSE 4173
 
 # Menjalankan aplikasi dalam mode preview
-CMD ["yarn", "preview", "--host", "0.0.0.0"]
+CMD ["yarn", "preview"]
