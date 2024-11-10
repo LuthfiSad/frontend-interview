@@ -2,7 +2,7 @@ import React from "react";
 import Search from "./Search";
 import Filter from "./Filter";
 import { useAtom } from "jotai";
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 
 const FilterSearch: React.FC = () => {
   const [isDarkMode] = useAtom(darkModeAtom);

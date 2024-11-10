@@ -1,6 +1,6 @@
 import React from "react";
 import { useAtom } from "jotai";
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 import Recommended from "../container/Recommended";
 import ButtonAction from "../components/ButtonAction";
 import VideoPlayer from "../components/VideoPlayer";

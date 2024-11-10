@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useAtom } from "jotai";
-import { darkModeAtom } from "../hooks/useDarkMode";
+import { darkModeAtom } from "../store/darkMode";
 
 const Footer: React.FC = () => {
   const footerRef = useRef<HTMLElement | null>(null);

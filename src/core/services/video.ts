@@ -24,7 +24,7 @@ const sampleVideos: Video[] = Array.from({ length: 50 }, (_, i) => ({
   views: Math.floor(Math.random() * 10000),
   likes: Math.floor(Math.random() * 5000),
   uploadDate: new Date(2023, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1),
-  isFavorite: Math.random() < 0.5,
+  isFavorite: false,
   thumbnailUrl: thumbnails[Math.floor(Math.random() * thumbnails.length)],
 }));
 

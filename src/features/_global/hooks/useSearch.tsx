@@ -23,10 +23,10 @@ export const useSearch = () => {
     filterBy,
   }: SearchParams) => {
     setSearchParams({
-      ...(search || searchQuery ? { search: search ?? searchQuery } : null),
-      ...(direction || directionQuery ? { direction: direction ?? directionQuery } : null),
-      ...(orderBy || orderByQuery ? { orderBy: orderBy ?? orderByQuery } : null),
-      ...(filterBy || filterByQuery ? { filterBy: filterBy ?? filterByQuery } : null),
+      ...(search !== "" && (search || searchQuery) ? { search: search ?? searchQuery } : null),
+      ...(direction !== "" && (direction || directionQuery) ? { direction: direction ?? directionQuery } : null),
+      ...(orderBy !== "" &&(orderBy || orderByQuery) ? { orderBy: orderBy ?? orderByQuery } : null),
+      ...(filterBy !== "" && (filterBy || filterByQuery) ? { filterBy: filterBy ?? filterByQuery } : null),
     });
   };
 

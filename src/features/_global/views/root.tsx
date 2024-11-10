@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { darkModeAtom } from "../hooks/useDarkMode";
+import { darkModeAtom } from "../store/darkMode";
 import { useAtom } from "jotai";
 
 const RootView: React.FC = () => {

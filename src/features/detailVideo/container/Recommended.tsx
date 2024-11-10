@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 import { useAtom } from "jotai";
 import gsap from "gsap";
 

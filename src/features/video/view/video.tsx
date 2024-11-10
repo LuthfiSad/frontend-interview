@@ -6,24 +6,28 @@ import ListVideo from "../container/ListVideo";
 import { useSearch } from "@features/_global/hooks/useSearch";
 import sampleVideos from "@core/services/video";
 import { Video } from "@core/model/video";
+import { useAtom } from "jotai";
+import { likesAtom } from "@features/_global/store/likes";
 
 const VideoView: React.FC = () => {
   const { searchQuery, directionQuery, filterByQuery, orderByQuery } =
     useSearch();
   const [videosData, setVideosData] = useState<Video[]>([]);
+  const [likes] = useAtom(likesAtom);
 
   useEffect(() => {
     const searchResult = sampleVideos.filter((video) =>
       video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    console.log({searchResult});
+    console.log({ searchResult });
 
-    const filteredResult = filterByQuery ? searchResult.filter(
-      (video) =>
-        video.category.toLowerCase() === filterByQuery.toLowerCase() ||
-        video.uploader.toLowerCase() === filterByQuery.toLowerCase()
-    ) : searchResult;
-    console.log({filteredResult});
+    const filteredResult = filterByQuery
+      ? searchResult.filter(
+          (video) =>
+            video.category.toLowerCase() === filterByQuery.toLowerCase() ||
+            video.uploader.toLowerCase() === filterByQuery.toLowerCase()
+        )
+      : searchResult;
 
     const sortedResult = filteredResult.sort((a, b) => {
       if (orderByQuery === "views") {
@@ -35,7 +39,6 @@ const VideoView: React.FC = () => {
       }
       return 0;
     });
-    console.log({sortedResult});
 
     if (directionQuery === "desc") {
       setVideosData(sortedResult.reverse());
@@ -45,8 +48,14 @@ const VideoView: React.FC = () => {
   }, [searchQuery, directionQuery, filterByQuery, orderByQuery]);
 
   useEffect(() => {
-    console.log({videosData});
-  }, [videosData]);
+    setVideosData((prevVideos) =>
+      prevVideos.map((video) => ({
+        ...video,
+        isFavorite: likes.includes(video.id),
+        likes: video.likes + (likes.includes(video.id) ? 1 : video.isFavorite ? -1 : 0),
+      }))
+    );
+  }, [likes]);
 
   return (
     <>

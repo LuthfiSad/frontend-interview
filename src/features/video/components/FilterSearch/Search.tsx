@@ -1,4 +1,4 @@
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 import { useSearch } from "@features/_global/hooks/useSearch";
 import { useAtom } from "jotai";
 import React from "react";
@@ -11,11 +11,20 @@ import { DropdownProps } from "@features/video/types/dropdown";
 
 const Search: React.FC = () => {
   const [isDarkMode] = useAtom(darkModeAtom);
-  const { directionQuery, handleSearchChange, searchQuery } = useSearch();
+  const { directionQuery, handleSearchChange, searchQuery, orderByQuery } =
+    useSearch();
 
   const dropdownOrderBy: DropdownProps = {
-    title: "Order By",
+    title: orderByQuery || "Order By",
     option: [
+      ...(orderByQuery
+        ? [
+            {
+              label: "Reset",
+              onClick: () => handleSearchChange({ orderBy: "" }),
+            },
+          ]
+        : []),
       {
         label: "Views",
         onClick: () => handleSearchChange({ orderBy: "views" }),
@@ -32,11 +41,16 @@ const Search: React.FC = () => {
   };
 
   const dropdownDirection: DropdownProps = {
-    title: directionQuery === "asc" ? <AiOutlineSortAscending/> : <AiOutlineSortDescending />,
+    title:
+      directionQuery === "asc" ? (
+        <AiOutlineSortAscending />
+      ) : (
+        <AiOutlineSortDescending />
+      ),
     option: [
       {
         label: "Ascending",
-        onClick: () => handleSearchChange({ direction: "asc" }),
+        onClick: () => handleSearchChange({ direction: "" }),
       },
       {
         label: "Descending",
@@ -60,7 +74,7 @@ const Search: React.FC = () => {
         } border-2 box-border max-w-xl rounded-full px-4 py-2 flex-1 ring-0 outline-none min-w-[150px]`}
       />
       <Dropdown {...dropdownOrderBy} />
-      <Dropdown {...dropdownDirection} />
+      {orderByQuery && <Dropdown {...dropdownDirection} />}
     </div>
   );
 };

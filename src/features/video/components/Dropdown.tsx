@@ -1,4 +1,4 @@
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { useAtom } from "jotai";
 import { MdArrowDropDown } from "react-icons/md";
@@ -13,7 +13,7 @@ const Dropdown: React.FC<DropdownProps> = ({ title, option, className }) => {
         <MenuButton
           className={`px-4 min-w-max py-[10px] ${className} ${
             isDarkMode ? "bg-gray-300 text-gray-800" : "bg-gray-600"
-          } rounded-full flex items-center space-x-2`}
+          } rounded-full flex items-center space-x-2 capitalize`}
         >
           <span>{title}</span>
           <MdArrowDropDown />

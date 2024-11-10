@@ -1,4 +1,4 @@
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 import { useAtom } from "jotai";
 import React from "react";
 import { BiSolidLike } from "react-icons/bi";

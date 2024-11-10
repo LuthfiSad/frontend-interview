@@ -1,5 +1,6 @@
 import { Video } from "@core/model/video";
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
+import { likesAtom } from "@features/_global/store/likes";
 import { useAtom } from "jotai";
 import React from "react";
 import { BiSolidLike } from "react-icons/bi";
@@ -16,9 +17,20 @@ const CardVideo: React.FC<Video> = ({
   category,
   uploader,
   isFavorite,
-  id
+  id,
 }) => {
   const [isDarkMode] = useAtom(darkModeAtom);
+  const [prevLikes, setLikes] = useAtom(likesAtom);
+
+  const handleChangeLike = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    e.preventDefault();
+    const newLikes = prevLikes.includes(id)
+    ? prevLikes.filter((likeId: string) => likeId !== id)
+    : [...prevLikes, id]
+      
+    localStorage.setItem("likes-video", JSON.stringify(newLikes));
+    setLikes(newLikes);
+  };
 
   return (
     <Link
@@ -94,7 +106,7 @@ const CardVideo: React.FC<Video> = ({
             {likes} Likes
           </span>
           <button
-            // onClick={handleChangeLike}
+            onClick={(e) => handleChangeLike(e, id)}
             className={`flex items-center space-x-1 ${
               isFavorite
                 ? "text-blue-500"

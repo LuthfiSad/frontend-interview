@@ -1,6 +1,6 @@
 import { categories } from "@core/services/category";
 import { uploaders } from "@core/services/uploader";
-import { darkModeAtom } from "@features/_global/hooks/useDarkMode";
+import { darkModeAtom } from "@features/_global/store/darkMode";
 import { useSearch } from "@features/_global/hooks/useSearch";
 import { useAtom } from "jotai";
 import { useEffect, useRef, useState } from "react";
