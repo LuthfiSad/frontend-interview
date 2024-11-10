@@ -5,13 +5,17 @@ import { uploaders } from "./uploader";
 const thumbnails = [
   "https://i.ytimg.com/vi/TZcY2bwand0/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhjIFQoZTAP&rs=AOn4CLC1KNSuhBuLMGLn_B8gK9jNUpxwPg",
   "https://i.ytimg.com/vi/qkzjd5k2vUM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCVhink_INkgr1UxQ1eSioKU-cZdQ",
-  "https://i.ytimg.com/vi/UPJcSkRs_XE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAxil-5NQjs8BE_FmjIaCLo_d4iug"
+  "https://i.ytimg.com/vi/UPJcSkRs_XE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAxil-5NQjs8BE_FmjIaCLo_d4iug",
+  "https://i.ytimg.com/vi/lWMlgX_1xdU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDsEDcWxaQ7G0UbYzMSXNm3gui0lg",
+  "https://i.ytimg.com/vi/2cBHu2450TM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB2x-2aoGSeKXfmusJmdB19u_cp1A"
 ];
 
 const videos = [
-  "https://www.youtube.com/watch?v=UPJcSkRs_XE",
-  "https://www.youtube.com/watch?v=fLPS4sIpYh0",
-  "https://www.youtube.com/watch?v=bUxd3jqCr94"
+  "https://youtu.be/qmgA_WejI8w?si=jbvd7iaQK3cVpJAi",
+  "https://youtu.be/fLPS4sIpYh0?si=cToJfCH45_V1aIUG",
+  "https://youtu.be/bUxd3jqCr94?si=2SN-qP7MRXuiOmGp",
+  "https://youtu.be/lWMlgX_1xdU?si=qk-VnW6E7oE7_qLi",
+  "https://youtu.be/2cBHu2450TM?si=P2SFUtaFUR9WIO0L"
 ];
 
 const sampleVideos: Video[] = Array.from({ length: 50 }, (_, i) => ({
