@@ -18,7 +18,7 @@ const videos = [
   "https://www.youtube.com/embed/2cBHu2450TM?si=eLnISYriMe_jgJJ2"
 ];
 
-const sampleVideos: Video[] = Array.from({ length: 50 }, (_, i) => ({
+const sampleVideos: Video[] = Array.from({ length: 100 }, (_, i) => ({
   id: `video_${i + 1}`,
   title: `Sample Video Title ${i + 1}`,
   videoUrl: videos[Math.floor(Math.random() * videos.length)],
