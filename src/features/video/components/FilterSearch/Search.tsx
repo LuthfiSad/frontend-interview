@@ -30,7 +30,7 @@ const Search: React.FC = () => {
         ? [
             {
               label: "Reset",
-              onClick: () => handleSearchChange({ orderBy: "" }),
+              onClick: () => handleSearchChange({ orderBy: "", direction: "" }),
             },
           ]
         : []),

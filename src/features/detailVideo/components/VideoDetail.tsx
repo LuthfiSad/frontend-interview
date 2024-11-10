@@ -1,4 +1,5 @@
 import { Video } from "@core/model/video";
+import { formatSubscriber } from "@features/_global/helper/FormatSubscriber";
 import { formatDate } from "@features/_global/helper/FormatTime";
 import { darkModeAtom } from "@features/_global/store/darkMode";
 import gsap from "gsap";
@@ -47,7 +48,7 @@ const VideoDetail: React.FC<Video> = ({
       >
         <span className="text-sm">Published on: {formatDate(uploadDate)}</span>
         <span className="text-sm">By: {uploader}</span>
-        <span className="text-sm">{views} Views</span>
+        <span className="text-sm">{formatSubscriber(views)} Views</span>
       </div>
       <p
         ref={descriptionRef}
@@ -56,7 +57,7 @@ const VideoDetail: React.FC<Video> = ({
         {expanded ? description : `${description.slice(0, 200)}`}
         {!expanded && description.length > 200 && (
           <button
-            className="text-blue-500 ml-2 cursor-pointer"
+            className="text-blue-500 ml-2 cursor-pointer hover:text-blue-300"
             onClick={() => setExpanded(true)}
           >
             Read more...
@@ -65,7 +66,7 @@ const VideoDetail: React.FC<Video> = ({
       </p>
       {expanded && (
         <button
-          className="text-blue-500 cursor-pointer"
+          className="text-blue-500 cursor-pointer hover:text-blue-300"
           onClick={() => {
             setExpanded(false);
             window.scrollTo({

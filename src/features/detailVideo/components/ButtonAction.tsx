@@ -1,4 +1,5 @@
 import { Video } from "@core/model/video";
+import { formatSubscriber } from "@features/_global/helper/FormatSubscriber";
 import { darkModeAtom } from "@features/_global/store/darkMode";
 import { likesAtom } from "@features/_global/store/likes";
 import { useAtom } from "jotai";
@@ -35,7 +36,7 @@ const ButtonAction: React.FC<Video> = ({ id, likes, isFavorite }) => {
         }`}
       >
         <BiSolidLike />
-        <span>Like {likes}</span>
+        <span>Like {formatSubscriber(likes)}</span>
       </button>
       <button
         className={`flex items-center space-x-2 ${

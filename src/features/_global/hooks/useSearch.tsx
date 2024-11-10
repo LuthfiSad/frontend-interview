@@ -29,7 +29,7 @@ export const useSearch = () => {
       ...(orderBy !== "" &&(orderBy || orderByQuery) ? { orderBy: orderBy ?? orderByQuery } : null),
       ...(filterBy !== "" && (filterBy || filterByQuery) ? { filterBy: filterBy ?? filterByQuery } : null),
     });
-  }, []);
+  }, [directionQuery, filterByQuery, orderByQuery, searchQuery, setSearchParams]);
 
   return {
     searchQuery,

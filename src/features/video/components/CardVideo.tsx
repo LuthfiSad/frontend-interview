@@ -1,4 +1,5 @@
 import { Video } from "@core/model/video";
+import { formatSubscriber } from "@features/_global/helper/FormatSubscriber";
 import { formatDate } from "@features/_global/helper/FormatTime";
 import { darkModeAtom } from "@features/_global/store/darkMode";
 import { likesAtom } from "@features/_global/store/likes";
@@ -86,7 +87,7 @@ const CardVideo: React.FC<Video> = ({
               isDarkMode ? "text-blue-300" : "text-blue-500"
             } font-bold`}
           >
-            {views} Views
+            {formatSubscriber(views)} Views
           </span>
           <span
             className={`text-xs ${
@@ -104,7 +105,7 @@ const CardVideo: React.FC<Video> = ({
               isDarkMode ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            {likes} Likes
+            {formatSubscriber(likes)} Likes
           </span>
           <button
             onClick={(e) => handleChangeLike(e, id)}
