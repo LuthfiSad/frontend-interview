@@ -1,5 +1,5 @@
 # Menggunakan Node.js versi 20 sebagai image dasar
-FROM node:20
+FROM node:20-alpine
 
 # Menentukan direktori kerja dalam container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Menginstal dependensi
-RUN yarn install
+RUN yarn
 
 # Menyalin seluruh kode aplikasi ke dalam container
 COPY . .
