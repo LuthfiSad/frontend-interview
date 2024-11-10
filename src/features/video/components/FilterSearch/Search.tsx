@@ -17,12 +17,16 @@ const Search: React.FC = () => {
     title: "Order By",
     option: [
       {
-        label: "Name",
-        onClick: () => handleSearchChange({ orderBy: "name" }),
+        label: "Views",
+        onClick: () => handleSearchChange({ orderBy: "views" }),
       },
       {
-        label: "Date",
-        onClick: () => handleSearchChange({ orderBy: "createdAt" }),
+        label: "Likes",
+        onClick: () => handleSearchChange({ orderBy: "likes" }),
+      },
+      {
+        label: "Upload Date",
+        onClick: () => handleSearchChange({ orderBy: "uploadDate" }),
       },
     ],
   };

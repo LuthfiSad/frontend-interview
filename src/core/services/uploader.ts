@@ -1,0 +1,1 @@
+export const uploaders = Array.from({ length: 10 }, (_, i) => `Uploader_${i + 1}`);
