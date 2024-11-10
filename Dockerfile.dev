@@ -1,0 +1,20 @@
+# Menggunakan Node.js versi 20 sebagai image dasar
+FROM node:20
+
+# Menentukan direktori kerja dalam container
+WORKDIR /app
+
+# Menyalin file package.json dan yarn.lock ke dalam container
+COPY package.json yarn.lock ./
+
+# Menginstal dependensi
+RUN yarn install
+
+# Menyalin seluruh kode proyek ke dalam container
+COPY . .
+
+# Mengekspos port yang digunakan oleh Vite dalam mode pengembangan (port 5173)
+EXPOSE 5173
+
+# Menjalankan Vite dalam mode pengembangan
+CMD ["yarn", "dev", "--host", "0.0.0.0"]
