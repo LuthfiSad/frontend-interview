@@ -15,11 +15,21 @@ const VideoView: React.FC = () => {
   const [videosData, setVideosData] = useState<Video[]>([]);
   const [likes] = useAtom(likesAtom);
 
+  const handleShuffledVideos = () => {
+    const uniqueVideos = sampleVideos.filter(
+      (video) => !videosData.some((existingVideo) => existingVideo.id === video.id)
+    );
+    const shuffledVideos = uniqueVideos
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 30);
+    return shuffledVideos;
+  };
+
   useEffect(() => {
-    const searchResult = sampleVideos.filter((video) =>
+    const shuffledVideos = handleShuffledVideos();
+    const searchResult = shuffledVideos.filter((video) =>
       video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    console.log({ searchResult });
 
     const filteredResult = filterByQuery
       ? searchResult.filter(
@@ -47,6 +57,11 @@ const VideoView: React.FC = () => {
     }
   }, [searchQuery, directionQuery, filterByQuery, orderByQuery]);
 
+  const handleAddVideos = () => {
+    const shuffledVideos = handleShuffledVideos();
+    setVideosData((prevVideos) => [...prevVideos, ...shuffledVideos]);
+  };
+
   useEffect(() => {
     setVideosData((prevVideos) =>
       prevVideos.map((video) => ({
@@ -61,7 +76,7 @@ const VideoView: React.FC = () => {
     <>
       <SwiperHero />
       <FilterSearch />
-      <ListVideo videos={videosData} />
+      <ListVideo videos={videosData} handleAddVideos={handleAddVideos} sampleVideos={sampleVideos} />
     </>
   );
 };

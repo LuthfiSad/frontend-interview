@@ -4,7 +4,7 @@ import { formatDate } from "@features/_global/helper/FormatTime";
 import { darkModeAtom } from "@features/_global/store/darkMode";
 import { likesAtom } from "@features/_global/store/likes";
 import { useAtom } from "jotai";
-import React from "react";
+import React, { useState } from "react";
 import { BiSolidLike } from "react-icons/bi";
 import { FaRegClock } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -23,6 +23,7 @@ const CardVideo: React.FC<Video> = ({
 }) => {
   const [isDarkMode] = useAtom(darkModeAtom);
   const [prevLikes, setLikes] = useAtom(likesAtom);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleChangeLike = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     e.preventDefault();
@@ -42,11 +43,19 @@ const CardVideo: React.FC<Video> = ({
       } rounded-lg shadow-lg overflow-hidden`}
     >
       {/* Video Thumbnail */}
-      <img
-        src={thumbnailUrl}
-        alt="Video Thumbnail"
-        className="w-full h-48 object-cover"
-      />
+      <div className="w-full h-48 bg-gray-300 rounded-lg">
+        {!isImageLoaded && (
+          <div className="w-full h-full bg-gray-300 animate-pulse rounded-lg" />
+        )}
+        <img
+          src={thumbnailUrl}
+          alt="Video Thumbnail"
+          className={`w-full h-48 object-cover rounded-lg transition-opacity duration-500 ${
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsImageLoaded(true)} // Ketika gambar sudah dimuat
+        />
+      </div>
 
       {/* Video Details */}
       <div className="p-4 space-y-2">
