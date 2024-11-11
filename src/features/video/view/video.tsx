@@ -10,31 +10,37 @@ import { useAtom } from "jotai";
 import { likesAtom } from "@features/_global/store/likes";
 
 const VideoView: React.FC = () => {
-  const { searchQuery, directionQuery, filterByQuery, orderByQuery } =
-    useSearch();
+  const [sampleVideosData, setSampleVideosData] = useState<Video[]>([]);
   const [videosData, setVideosData] = useState<Video[]>([]);
   const [likes] = useAtom(likesAtom);
+  const { searchQuery, directionQuery, filterByQuery, orderByQuery } =
+    useSearch();
 
   const handleShuffledVideos = (videos: Video[]) => {
     if (
-      videos.length === sampleVideos.length ||
+      videos.length === sampleVideosData.length ||
       searchQuery ||
       directionQuery ||
       filterByQuery ||
       orderByQuery
     ) {
-      if (videos.length !== sampleVideos.length) {
-        const uniqueVideos = videosData.length === 0  ? videos :  sampleVideos.filter(
-          (video) =>
-            !videosData.some((existingVideo) => existingVideo.id === video.id)
-        );
-        
+      if (videos.length !== sampleVideosData.length) {
+        const uniqueVideos =
+          videosData.length > videos.length
+            ? videos
+            : sampleVideosData.filter(
+                (video) =>
+                  !videosData.some(
+                    (existingVideo) => existingVideo.id === video.id
+                  )
+              );
+
         const shuffledVideos = filteringVideos(uniqueVideos).slice(0, 30);
         return shuffledVideos;
       }
-      return sampleVideos.sort(() => Math.random() - 0.5).slice(0, 30);
+      return sampleVideosData.sort(() => Math.random() - 0.5).slice(0, 30);
     }
-    const uniqueVideos = sampleVideos.filter(
+    const uniqueVideos = sampleVideosData.filter(
       (video) => !videos.some((existingVideo) => existingVideo.id === video.id)
     );
     const shuffledVideos = uniqueVideos
@@ -75,16 +81,30 @@ const VideoView: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    const data = filteringVideos(sampleVideos);
-    console.log(data);
-    setVideosData(handleShuffledVideos(data));
-  }, [searchQuery, directionQuery, filterByQuery, orderByQuery]);
-
   const handleAddVideos = (videos: Video[]) => {
     const shuffledVideos = handleShuffledVideos(videos);
     setVideosData((prevVideos) => [...prevVideos, ...shuffledVideos]);
   };
+
+  useEffect(() => {
+    const data = filteringVideos(sampleVideosData);
+
+    setVideosData(handleShuffledVideos(data));
+  }, [
+    searchQuery,
+    directionQuery,
+    filterByQuery,
+    orderByQuery,
+    sampleVideosData,
+  ]);
+
+  useEffect(() => {
+    setSampleVideosData(sampleVideos);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   useEffect(() => {
     setVideosData((prevVideos) =>
@@ -105,7 +125,7 @@ const VideoView: React.FC = () => {
       <ListVideo
         videos={videosData}
         handleAddVideos={handleAddVideos}
-        sampleVideos={sampleVideos}
+        sampleVideos={filteringVideos(sampleVideosData)}
       />
     </>
   );

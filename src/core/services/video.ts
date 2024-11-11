@@ -17,7 +17,6 @@ const thumbnails = [
   "https://i.ytimg.com/vi/YtvDJ1g5PsU/hq720.jpg?v=6731f284&sqp=CPS-yLkG-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDiLJo_VDgAvdTUFd-0QCHGJtDgZg",
   "https://i.ytimg.com/vi/fg72DS56lwE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCIhWO871KM_MSMkhazFkvw7ceMEQ",
   "https://i.ytimg.com/vi/Xu1wA7CfhQg/hqdefault.jpg?sqp=-oaymwExCOADEI4CSFryq4qpAyMIARUAAIhCGAHwAQH4Af4JgALQBYoCDAgAEAEYZSBcKFcwDw==&rs=AOn4CLCvyIEXSwJBMHcnZZYh6d75OLeOkA",
-
 ];
 
 const videos = [
@@ -28,14 +27,14 @@ const videos = [
   "https://www.youtube.com/embed/2cBHu2450TM?si=eLnISYriMe_jgJJ2",
 ];
 
-const sampleVideos: Video[] = Array.from({ length: 200 }, (_, i) => ({
+const sampleVideos: Video[] = Array.from({ length: 10000 }, (_, i) => ({
   id: `video_${i + 1}`,
   title: `Sample Video Title ${i + 1}`,
   videoUrl: videos[Math.floor(Math.random() * videos.length)],
   category: categories[Math.floor(Math.random() * categories.length)],
   uploader: uploaders[Math.floor(Math.random() * uploaders.length)],
-  views: Math.floor(Math.random() * 10000),
-  likes: Math.floor(Math.random() * 5000),
+  views: Math.floor(Math.random() * 10000000),
+  likes: Math.floor(Math.random() * 5000000),
   uploadDate: new Date(
     2023,
     Math.floor(Math.random() * 12),
