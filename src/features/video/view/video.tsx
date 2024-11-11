@@ -15,19 +15,37 @@ const VideoView: React.FC = () => {
   const [videosData, setVideosData] = useState<Video[]>([]);
   const [likes] = useAtom(likesAtom);
 
-  const handleShuffledVideos = () => {
+  const handleShuffledVideos = (videos: Video[]) => {
+    if (
+      videos.length === sampleVideos.length ||
+      searchQuery ||
+      directionQuery ||
+      filterByQuery ||
+      orderByQuery
+    ) {
+      if (videos.length !== sampleVideos.length) {
+        const uniqueVideos = videosData.length === 0  ? videos :  sampleVideos.filter(
+          (video) =>
+            !videosData.some((existingVideo) => existingVideo.id === video.id)
+        );
+        
+        const shuffledVideos = filteringVideos(uniqueVideos).slice(0, 30);
+        return shuffledVideos;
+      }
+      return sampleVideos.sort(() => Math.random() - 0.5).slice(0, 30);
+    }
     const uniqueVideos = sampleVideos.filter(
-      (video) => !videosData.some((existingVideo) => existingVideo.id === video.id)
+      (video) => !videos.some((existingVideo) => existingVideo.id === video.id)
     );
     const shuffledVideos = uniqueVideos
       .sort(() => Math.random() - 0.5)
       .slice(0, 30);
+
     return shuffledVideos;
   };
 
-  useEffect(() => {
-    const shuffledVideos = handleShuffledVideos();
-    const searchResult = shuffledVideos.filter((video) =>
+  const filteringVideos: (videos: Video[]) => Video[] = (videos: Video[]) => {
+    const searchResult = videos.filter((video) =>
       video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -51,14 +69,20 @@ const VideoView: React.FC = () => {
     });
 
     if (directionQuery === "desc") {
-      setVideosData(sortedResult.reverse());
+      return sortedResult.reverse();
     } else {
-      setVideosData(sortedResult);
+      return sortedResult;
     }
+  };
+
+  useEffect(() => {
+    const data = filteringVideos(sampleVideos);
+    console.log(data);
+    setVideosData(handleShuffledVideos(data));
   }, [searchQuery, directionQuery, filterByQuery, orderByQuery]);
 
-  const handleAddVideos = () => {
-    const shuffledVideos = handleShuffledVideos();
+  const handleAddVideos = (videos: Video[]) => {
+    const shuffledVideos = handleShuffledVideos(videos);
     setVideosData((prevVideos) => [...prevVideos, ...shuffledVideos]);
   };
 
@@ -67,7 +91,9 @@ const VideoView: React.FC = () => {
       prevVideos.map((video) => ({
         ...video,
         isFavorite: likes.includes(video.id),
-        likes: video.likes + (likes.includes(video.id) ? 1 : video.isFavorite ? -1 : 0),
+        likes:
+          video.likes +
+          (likes.includes(video.id) ? 1 : video.isFavorite ? -1 : 0),
       }))
     );
   }, [likes]);
@@ -76,7 +102,11 @@ const VideoView: React.FC = () => {
     <>
       <SwiperHero />
       <FilterSearch />
-      <ListVideo videos={videosData} handleAddVideos={handleAddVideos} sampleVideos={sampleVideos} />
+      <ListVideo
+        videos={videosData}
+        handleAddVideos={handleAddVideos}
+        sampleVideos={sampleVideos}
+      />
     </>
   );
 };

@@ -13,10 +13,19 @@ const Recommended: React.FC<{ id: string }> = ({ id }) => {
   const [randomVideos, setRandomVideos] = useState<Video[]>([]);
   const [finalRandom, setFinalRandom] = useState(false);
 
+  const handleShuffledVideos = (videos: Video[]) => {
+    const uniqueVideos = sampleVideos.filter(
+      (video) => !videos.some((existingVideo) => existingVideo.id === video.id)
+    );
+    const shuffledVideos = uniqueVideos
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 30);
+    return shuffledVideos;
+  };
+
   useEffect(() => {
-    const shuffledVideos = [...sampleVideos]
-      .sort(() => Math.random() - 0.5) // Acak array
-      .slice(0, 10); // Ambil 20 video pertama
+    setFinalRandom(false);
+    const shuffledVideos = handleShuffledVideos(randomVideos);
 
     setRandomVideos(shuffledVideos);
 
@@ -28,13 +37,7 @@ const Recommended: React.FC<{ id: string }> = ({ id }) => {
   }, [id]);
 
   const handleAddRandomVideos = (videos: Video[]) => {
-    const uniqueVideos = sampleVideos.filter(
-      (video) => !videos.some((existingVideo) => existingVideo.id === video.id)
-    );
-  
-    const shuffledVideos = uniqueVideos
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 10);
+    const shuffledVideos = handleShuffledVideos(videos);
 
     setRandomVideos([...videos, ...shuffledVideos]);
 

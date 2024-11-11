@@ -9,7 +9,7 @@ import { MdOutlineDownloading } from "react-icons/md";
 
 const ListVideo: React.FC<{
   videos: Video[];
-  handleAddVideos: () => void;
+  handleAddVideos: (videos: Video[]) => void;
   sampleVideos: Video[];
 }> = ({ videos, handleAddVideos, sampleVideos }) => {
   const videoCardRef = useRef<HTMLDivElement | null>(null);
@@ -29,10 +29,10 @@ const ListVideo: React.FC<{
   }, []);
 
   const fetchMoreVideos = useCallback(async () => {
-    if (videos.length >= sampleVideos.length) return;
+    if (videos.length !== sampleVideos.length && (videos.length % 30 !== 0 || videos.length === 0)) return;
     setIsLoading(true);
     setTimeout(() => {
-      handleAddVideos();
+      handleAddVideos(videos);
       setIsLoading(false);
     }, 2000);
   }, [handleAddVideos]);
