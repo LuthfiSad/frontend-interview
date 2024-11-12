@@ -76,7 +76,7 @@ const VideoView: React.FC = () => {
         return a.views - b.views;
       } else if (orderByQuery === "likes") {
         return a.likes - b.likes;
-      } else if (orderByQuery === "createdAt") {
+      } else if (orderByQuery === "uploadDate") {
         return a.uploadDate.getTime() - b.uploadDate.getTime();
       }
       return 0;

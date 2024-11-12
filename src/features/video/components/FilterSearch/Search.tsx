@@ -9,6 +9,7 @@ import {
 import Dropdown from "../Dropdown";
 import { DropdownProps } from "@features/video/types/dropdown";
 import useDebounce from "@features/_global/hooks/useDebounce";
+import { formatCamelCaseToTextSpace } from "@features/_global/helper/FormatCamelCaseToTextSpace";
 
 const Search: React.FC = () => {
   const [isDarkMode] = useAtom(darkModeAtom);
@@ -24,7 +25,7 @@ const Search: React.FC = () => {
   }, [debouncedSearchQuery, handleSearchChange]);
 
   const dropdownOrderBy: DropdownProps = {
-    title: orderByQuery || "Order By",
+    title: formatCamelCaseToTextSpace(orderByQuery) || "Order By",
     option: [
       ...(orderByQuery
         ? [
