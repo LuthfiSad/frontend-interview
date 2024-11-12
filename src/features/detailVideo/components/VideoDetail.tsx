@@ -7,6 +7,7 @@ import { useAtom } from "jotai";
 import React, { useEffect, useRef, useState } from "react";
 
 const VideoDetail: React.FC<Video> = ({
+  id,
   title,
   uploadDate,
   description,
@@ -17,6 +18,10 @@ const VideoDetail: React.FC<Video> = ({
   const descriptionRef = useRef(null);
   const [isDarkMode] = useAtom(darkModeAtom);
   const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [id]);
 
   useEffect(() => {
     gsap.fromTo(
