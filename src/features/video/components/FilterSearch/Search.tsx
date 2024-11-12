@@ -51,7 +51,7 @@ const Search: React.FC = () => {
 
   const dropdownDirection: DropdownProps = {
     title:
-      directionQuery === "asc" ? (
+      directionQuery !== "desc" ? (
         <AiOutlineSortAscending />
       ) : (
         <AiOutlineSortDescending />

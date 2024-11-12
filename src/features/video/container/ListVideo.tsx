@@ -29,7 +29,7 @@ const ListVideo: React.FC<{
   }, []);
 
   const fetchMoreVideos = useCallback(async () => {
-    if (videos.length === sampleVideos.length || (videos.length % 30 !== 0 || videos.length === 0) && videos.length > videos.length) return;
+    if (videos.length === sampleVideos.length || (videos.length % 30 !== 0 || videos.length === 0)) return;
     setIsLoading(true);
     setTimeout(() => {
       handleAddVideos(videos);

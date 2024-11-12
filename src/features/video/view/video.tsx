@@ -24,9 +24,16 @@ const VideoView: React.FC = () => {
       filterByQuery ||
       orderByQuery
     ) {
-      if (videos.length !== sampleVideosData.length) {
+      if (
+        videos.length !== sampleVideosData.length ||
+        searchQuery ||
+        directionQuery ||
+        filterByQuery ||
+        orderByQuery
+      ) {
+
         const uniqueVideos =
-          videosData.length > videos.length
+          filteringVideos(sampleVideosData).length <= videos.length
             ? videos
             : sampleVideosData.filter(
                 (video) =>
@@ -38,6 +45,7 @@ const VideoView: React.FC = () => {
         const shuffledVideos = filteringVideos(uniqueVideos).slice(0, 30);
         return shuffledVideos;
       }
+      console.log("masuk");
       return sampleVideosData.sort(() => Math.random() - 0.5).slice(0, 30);
     }
     const uniqueVideos = sampleVideosData.filter(

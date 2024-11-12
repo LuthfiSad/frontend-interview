@@ -27,11 +27,12 @@ const videos = [
   "https://www.youtube.com/embed/2cBHu2450TM?si=eLnISYriMe_jgJJ2",
 ];
 
-const sampleVideos: Video[] = Array.from({ length: 10000 }, (_, i) => ({
+const sampleVideos: Video[] = Array.from({ length: 30 }, (_, i) => ({
   id: `video_${i + 1}`,
   title: `Sample Video Title ${i + 1}`,
   videoUrl: videos[Math.floor(Math.random() * videos.length)],
-  category: categories[Math.floor(Math.random() * categories.length)],
+  // category: categories[Math.floor(Math.random() * categories.length)],
+  category: "Education",
   uploader: uploaders[Math.floor(Math.random() * uploaders.length)],
   views: Math.floor(Math.random() * 10000000),
   likes: Math.floor(Math.random() * 5000000),
